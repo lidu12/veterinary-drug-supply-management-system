@@ -22,45 +22,55 @@ const targetDbName = process.env.DB_NAME || 'tropical_vet_db';
 const initDatabase = async () => {
   console.log('🔄 Initializing Tropical Veterinary Database...');
 
-  // Step 1: Connect to default 'postgres' database to ensure tropical_vet_db exists
-  const adminPool = new Pool({
-    host: dbHost,
-    port: dbPort,
-    user: dbUser,
-    password: dbPassword,
-    database: 'postgres',
-    connectionTimeoutMillis: 5000,
-  });
+  // Step 1: For local environments without DATABASE_URL, ensure database exists
+  if (!process.env.DATABASE_URL) {
+    const adminPool = new Pool({
+      host: dbHost,
+      port: dbPort,
+      user: dbUser,
+      password: dbPassword,
+      database: 'postgres',
+      connectionTimeoutMillis: 5000,
+    });
 
-  try {
-    console.log(`🔍 Checking if database '${targetDbName}' exists...`);
-    const checkRes = await adminPool.query(
-      `SELECT 1 FROM pg_database WHERE datname = $1`,
-      [targetDbName]
-    );
+    try {
+      console.log(`🔍 Checking if database '${targetDbName}' exists...`);
+      const checkRes = await adminPool.query(
+        `SELECT 1 FROM pg_database WHERE datname = $1`,
+        [targetDbName]
+      );
 
-    if (checkRes.rows.length === 0) {
-      console.log(`🔨 Database '${targetDbName}' does not exist. Creating it now...`);
-      await adminPool.query(`CREATE DATABASE "${targetDbName}"`);
-      console.log(`✅ Database '${targetDbName}' created successfully.`);
-    } else {
-      console.log(`✅ Database '${targetDbName}' already exists.`);
+      if (checkRes.rows.length === 0) {
+        console.log(`🔨 Database '${targetDbName}' does not exist. Creating it now...`);
+        await adminPool.query(`CREATE DATABASE "${targetDbName}"`);
+        console.log(`✅ Database '${targetDbName}' created successfully.`);
+      } else {
+        console.log(`✅ Database '${targetDbName}' already exists.`);
+      }
+    } catch (err) {
+      console.error('⚠️ Warning while checking/creating database:', err.message);
+    } finally {
+      await adminPool.end();
     }
-  } catch (err) {
-    console.error('⚠️ Warning while checking/creating database:', err.message);
-  } finally {
-    await adminPool.end();
+  } else {
+    console.log('☁️ Connecting directly to cloud PostgreSQL instance (DATABASE_URL detected)...');
   }
 
-  // Step 2: Connect to targetDbName to execute schema and seeds
-  const targetPool = new Pool({
-    host: dbHost,
-    port: dbPort,
-    user: dbUser,
-    password: dbPassword,
-    database: targetDbName,
-    connectionTimeoutMillis: 5000,
-  });
+  // Step 2: Connect to target database to execute schema and seeds
+  const targetPool = process.env.DATABASE_URL
+    ? new Pool({
+        connectionString: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false },
+        connectionTimeoutMillis: 10000,
+      })
+    : new Pool({
+        host: dbHost,
+        port: dbPort,
+        user: dbUser,
+        password: dbPassword,
+        database: targetDbName,
+        connectionTimeoutMillis: 5000,
+      });
 
   try {
     // Read and execute schema.sql

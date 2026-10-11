@@ -8,7 +8,16 @@
  * for Auth, Inventory, Suppliers, Transactions, and Security Audit trails.
  */
 
-const API_BASE = '/api';
+// Read API base URL from Vite environment variable (for production deployment on Vercel/Netlify)
+// Defaults to '/api' for local development with the Vite reverse proxy
+const getBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (!envUrl) return '/api';
+  const cleanUrl = envUrl.replace(/\/+$/, '');
+  return cleanUrl.endsWith('/api') ? cleanUrl : `${cleanUrl}/api`;
+};
+
+const API_BASE = getBaseUrl();
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('vet_token');

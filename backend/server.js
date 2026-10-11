@@ -38,14 +38,34 @@ const allowedOrigins = [
   'http://127.0.0.1:3000'
 ];
 
+if (process.env.FRONTEND_URL) {
+  process.env.FRONTEND_URL.split(',').forEach(url => {
+    const trimmed = url.trim().replace(/\/+$/, '');
+    if (trimmed && !allowedOrigins.includes(trimmed)) {
+      allowedOrigins.push(trimmed);
+    }
+  });
+}
+
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps, curl, or same-origin)
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(null, true); // Permissive in development
+    // Allow requests with no origin (mobile apps, curl, or same-origin)
+    if (!origin) return callback(null, true);
+
+    // Allow explicitly configured origins
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+
+    // Allow Vercel / Netlify / Render preview and production domains
+    if (
+      origin.endsWith('.vercel.app') ||
+      origin.endsWith('.netlify.app') ||
+      origin.endsWith('.onrender.com') ||
+      process.env.NODE_ENV !== 'production'
+    ) {
+      return callback(null, true);
     }
+
+    callback(null, true);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
