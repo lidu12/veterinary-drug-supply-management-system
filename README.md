@@ -1,274 +1,221 @@
-# 🛡️ Secure Veterinary Drug Supply Management System
-### **Tropical Veterinary Import & Distribution Operations**
-*Enterprise Cybersecurity Architecture & Auditable Supply Chain System*
+# 🛡️ Tropical Veterinary Drug Supply Management System
+### *Enterprise Pharmaceutical Supply Chain & Defense-in-Depth Cybersecurity Architecture*
+
+[![Vercel Deployment](https://img.shields.io/badge/Frontend-Vercel%20Live-black?style=for-the-badge&logo=vercel)](https://veterinary-drug-supply-management-system-lidiya1.vercel.app)
+[![Render Backend](https://img.shields.io/badge/Backend-Render%20Live-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://tropical-vet-backend.onrender.com/health)
+[![Neon PostgreSQL](https://img.shields.io/badge/Database-Neon%20Serverless%20Postgres-00E599?style=for-the-badge&logo=postgresql&logoColor=white)](https://neon.tech)
+[![License](https://img.shields.io/badge/License-ISC-blue?style=for-the-badge)](LICENSE)
 
 ---
 
-## 📖 System Overview
+## 🌐 Live Production Deployments
 
-The **Secure Veterinary Drug Supply Management System** is a production-grade full-stack web application custom-built for **Tropical Veterinary**, an animal healthcare company importing and distributing veterinary pharmaceuticals, vaccines, and supplements.
+| Component | Platform | Status | Live Link |
+|---|---|---|---|
+| **Web Client (SPA)** | **Vercel** | ![Status](https://img.shields.io/badge/Status-Live-emerald) | [🔗 Open Application](https://veterinary-drug-supply-management-system-lidiya1.vercel.app) |
+| **API Gateway** | **Render** | ![Status](https://img.shields.io/badge/Status-Online-emerald) | [🔗 Health Endpoint](https://tropical-vet-backend.onrender.com/health) |
+| **Relational Database** | **Neon** | ![Status](https://img.shields.io/badge/Status-Operational-emerald) | `Serverless PostgreSQL 16 (SSL Enforced)` |
 
-The platform delivers complete supply chain control, predictive stockout velocity modeling, strict Role-Based Access Control (RBAC), and defense-in-depth cybersecurity tailored for Tropical Veterinary's mission-critical operations.
+> **Note for Evaluators**: If Vercel Deployment Protection is active on the team account, sign in via Vercel or use the provided credentials below inside the application.
+
+---
+
+## 📖 Executive Summary
+
+The **Tropical Veterinary Drug Supply Management System** is a mission-critical full-stack platform engineered for **Tropical Veterinary**, an animal healthcare company importing and distributing veterinary pharmaceuticals, live vaccines, and livestock therapeutics.
+
+The platform provides complete end-to-end supply chain transparency, automated stockout velocity forecasting, strict Role-Based Access Control (RBAC), and enterprise-grade defensive cybersecurity controls to protect pharmaceutical data integrity.
+
+---
+
+## 🔑 Pre-Configured Demo Credentials
+
+The database has been seeded with three distinct operational roles. Quick one-click login buttons are also embedded directly into the login screen:
+
+| Role | Email | Password | Access Privileges |
+|---|---|---|---|
+| 👑 **Administrator** | `admin@tropicalvet.com` | `Admin123!` | Full control: Inventory CRUD, Supplier directory, Sales & Purchases, Destructive Deletes, Security Audit Trail, Intrusion Anomaly Alerts |
+| 💼 **Staff Member** | `staff@tropicalvet.com` | `Staff123!` | Operational: Add/Edit medicines, Manage suppliers, Record stock purchases and customer sales |
+| 🔍 **Compliance Auditor** | `auditor@tropicalvet.com` | `Auditor123!` | Read-Only Regulatory Oversight: Review inventory, inspect suppliers, review full immutable audit trail & intrusion alarms |
 
 ---
 
 ## 🏛️ System Architecture
 
 ```
-                               ┌─────────────────────────────────────────┐
-                               │       React Frontend (SPA / Vite)       │
-                               │  - Dashboard & Velocity Forecast Engine │
-                               │  - Drug Inventory & Expiry Badges       │
-                               │  - Supplier Directory & Transactions    │
-                               │  - Security Audit & Intrusion Center    │
-                               └────────────────────┬────────────────────┘
-                                                    │ HTTPS / REST (JWT)
-                                                    ▼
-                               ┌─────────────────────────────────────────┐
-                               │         Express API Gateway             │
-                               │  - Helmet Security Headers              │
-                               │  - IP Rate Limiting & DoS Shield        │
-                               │  - XSS Sanitization & Rapid Detect      │
-                               └────────────────────┬────────────────────┘
-                                                    │
-                 ┌──────────────────────────────────┴──────────────────────────────────┐
-                 ▼                                                                     ▼
-  ┌─────────────────────────────┐                                       ┌─────────────────────────────┐
-  │   Security & Auth Layer     │                                       │   Supply Chain Core         │
-  │  - Bcrypt Hashing (10 Rnds) │                                       │  - Inventory Management     │
-  │  - 5-Attempt Account Lockout│                                       │  - Predictive Stock Velocity│
-  │  - RBAC (Admin/Staff/Audit) │                                       │  - Atomic Sales & Purchases │
-  │  - Non-Repudiation Auditing │                                       │  - Supplier Registrations   │
-  └──────────────┬──────────────┘                                       └──────────────┬──────────────┘
-                 │                                                                     │
-                 └──────────────────────────────────┬──────────────────────────────────┘
-                                                    │ Parameterized SQL ($1, $2)
-                                                    ▼
-                               ┌─────────────────────────────────────────┐
-                               │       PostgreSQL Relational DB          │
-                               │  - users, medicines, suppliers,         │
-                               │    transactions, audit_logs, alerts     │
-                               └─────────────────────────────────────────┘
+                                ┌─────────────────────────────────────────┐
+                                │       React Frontend (SPA / Vite)       │
+                                │  - Predictive Stockout Velocity Engine │
+                                │  - Real-time Expiry & Restock Badges    │
+                                │  - Audited Sales & Purchase Registers   │
+                                │  - Intrusion & Anomaly Monitor Center   │
+                                └────────────────────┬────────────────────┘
+                                                     │ HTTPS / REST (JWT)
+                                                     ▼
+                                ┌─────────────────────────────────────────┐
+                                │         Express API Gateway             │
+                                │  - Helmet Defense-in-Depth Headers      │
+                                │  - Distributed IP Rate Limiter          │
+                                │  - Rapid Burst Intrusion Detection      │
+                                │  - Regex-Based Input Sanitization       │
+                                └────────────────────┬────────────────────┘
+                                                     │
+                 ┌───────────────────────────────────┴───────────────────────────────────┐
+                 ▼                                                                       ▼
+  ┌─────────────────────────────┐                                         ┌─────────────────────────────┐
+  │   Security & Auth Engine    │                                         │    Supply Chain Services    │
+  │  - Bcrypt 10 Salt Rounds    │                                         │  - Dynamic Stock Recalculate│
+  │  - 5-Attempt Account Lockout│                                         │  - High-Volume Anomaly Flags│
+  │  - Fine-Grained RBAC Guard  │                                         │  - Expiry Window Alerting   │
+  │  - Non-Repudiation Logger   │                                         │  - Supplier Registry        │
+  └──────────────┬──────────────┘                                         └──────────────┬──────────────┘
+                 │                                                                       │
+                 └───────────────────────────────────┬───────────────────────────────────┘
+                                                     │ Parameterized SQL Queries ($1, $2)
+                                                     ▼
+                                ┌─────────────────────────────────────────┐
+                                │       Neon Serverless PostgreSQL        │
+                                │  - SSL Encrypted (require / rejectUnauth│
+                                │  - Foreign Key Cascades & Check Bounds  │
+                                │  - B-Tree Performance Indexes           │
+                                └─────────────────────────────────────────┘
 ```
 
 ---
 
-## 📂 Project Folder Structure
+## 🔒 Defense-in-Depth Cybersecurity Specifications
 
-```
-veterinary-drug-supply-management-system/
-├── README.md                           # System documentation and security specification
-├── backend/
-│   ├── .env                            # Backend environment configuration
-│   ├── .env.example                    # Environment template
-│   ├── package.json                    # Backend dependencies and scripts
-│   ├── server.js                       # Express application entry point and global security middleware
-│   ├── config/
-│   │   └── db.js                       # PostgreSQL connection pool with parameterized query helpers
-│   ├── database/
-│   │   ├── schema.sql                  # Complete SQL DDL with constraints and indexes
-│   │   ├── seed.sql                    # Initial seed data for catalog and default accounts
-│   │   └── initDb.js                   # Automated one-step DB creation and seeding script
-│   ├── middleware/
-│   │   ├── auth.js                     # JWT token verification and Role-Based Access Control (RBAC)
-│   │   ├── security.js                 # Rate limiters, rapid request intrusion detection, XSS sanitization
-│   │   ├── validate.js                 # Input validation rules using express-validator
-│   │   └── auditLogger.js              # Immutable audit logging helper for non-repudiation
-│   ├── controllers/
-│   │   ├── authController.js           # Registration, login with 5-attempt lockout, and profile retrieval
-│   │   ├── inventoryController.js      # CRUD operations, stock status badges, predictive stockout velocity
-│   │   ├── supplierController.js       # Pharmaceutical supplier CRUD and import statistics
-│   │   ├── transactionController.js    # Atomic sales/purchases with stock lock and anomaly detection
-│   │   └── auditController.js          # Audit log queries and security threat alert management
-│   └── routes/
-│       ├── authRoutes.js               # /api/auth routes
-│       ├── inventoryRoutes.js          # /api/inventory routes
-│       ├── supplierRoutes.js           # /api/suppliers routes
-│       ├── transactionRoutes.js        # /api/transactions routes
-│       └── auditRoutes.js              # /api/audit routes
-│
-└── frontend/
-    ├── package.json                    # Frontend dependencies (React, Vite, Lucide)
-    ├── vite.config.js                  # Vite configuration and API proxy
-    ├── index.html                      # Single-page app HTML template
-    └── src/
-        ├── main.jsx                    # React DOM bootstrap
-        ├── App.jsx                     # Core application routing and shell
-        ├── index.css                   # Custom design system with medical emerald dark theme
-        ├── api/
-        │   └── client.js               # Centralized HTTP client with JWT interceptor
-        ├── context/
-        │   └── AuthContext.jsx         # React Auth context and RBAC permission helper
-        ├── components/
-        │   ├── Navbar.jsx              # System status bar, clock, and user badge
-        │   ├── Sidebar.jsx             # Role-aware navigation sidebar
-        │   ├── StatCard.jsx            # Reusable KPI card with glowing indicators
-        │   └── Modal.jsx               # Accessible dialog modal component
-        └── pages/
-            ├── LoginPage.jsx           # Secure login with lockout countdown & demo buttons
-            ├── RegisterPage.jsx        # Verified account registration
-            ├── DashboardPage.jsx       # Overview metrics, predictive stockout forecast, and alert ribbon
-            ├── InventoryPage.jsx       # Medicine catalog with search, category/alert filters, and CRUD
-            ├── SuppliersPage.jsx       # Import supplier directory and contact management
-            ├── TransactionsPage.jsx    # Audited stock transactions ledger with anomaly flags
-            └── AuditLogsPage.jsx       # Real-time intrusion alerts and audit trail (Admin/Auditor)
-```
+### 1. Cryptographic Password Hashing
+* **Standard**: Implements `bcryptjs` with **10 salt rounds** (`bcrypt.genSalt(10)`).
+* **Threat Neutralized**: Defends against rainbow table attacks and precomputed dictionary lookups.
 
----
+### 2. Stateless JWT Authentication & Claims Validation
+* **Standard**: Issues HMAC-SHA256 signed JSON Web Tokens (`jsonwebtoken`) bearing user identity and RBAC claims. Tokens automatically expire after **8 hours** (`JWT_EXPIRES_IN=8h`).
+* **Threat Neutralized**: Prevents session hijacking, credential replay, and unauthorized state tampering.
 
-## ⚡ Quick Setup & Installation Guide
+### 3. Role-Based Access Control (RBAC) & Least Privilege
+* **Standard**: Enforces `authorizeRoles('Admin', 'Staff', 'Auditor')` middleware on every protected route.
+* **Segregation of Duties**:
+  * Destructive `DELETE` actions are strictly reserved for **Admin**.
+  * Forensic audit trails and intrusion alerts (`/api/audit/*`) are accessible only by **Admin** and **Auditor**.
+  * Unauthorized attempts trigger immediate high-severity records in `security_alerts`.
 
-### Prerequisites
-- **Node.js**: v18.0.0 or higher (v22+ recommended)
-- **npm**: v9.0.0 or higher
-- **PostgreSQL**: v13.0 or higher
+### 4. Brute-Force Shield: 5-Failed Attempts Account Lockout
+* **Standard**: Tracks consecutive invalid authentication attempts. Upon the 5th consecutive failure, the account is locked for **15 minutes** (`locked_until = NOW() + 15 mins`) and an `ACCOUNT_LOCKED` security alert is dispatched.
+* **Threat Neutralized**: Shuts down automated password spraying and dictionary attacks.
 
----
+### 5. Rapid Request Anomaly Monitoring
+* **Standard**: `detectRapidRequests` middleware tracks per-IP request timestamps. Requests targeting authentication endpoints arriving under `150ms` intervals raise a `RAPID_REQUEST_ANOMALY` alert.
+* **Threat Neutralized**: Detects automated brute-force scripts and headless credential stuffers.
 
-### Step 1: Database Setup
-1. Create a PostgreSQL database named `tropical_vet_db`:
-   ```sql
-   CREATE DATABASE tropical_vet_db;
-   ```
-2. Verify credentials in `backend/.env`:
-   ```ini
-   PORT=5000
-   NODE_ENV=development
-   JWT_SECRET=tropical_vet_super_secret_jwt_key_2026_production_security
-   JWT_EXPIRES_IN=8h
-   DB_HOST=localhost
-   DB_PORT=5432
-   DB_NAME=tropical_vet_db
-   DB_USER=postgres
-   DB_PASSWORD=your_postgres_password
-   ```
+### 6. Relational SQL Injection Immunity
+* **Standard**: Zero string concatenation across all database interactions. Every query uses parameterized placeholder bindings (`$1, $2, ... $n`) with native type coercion via `pg.Pool.query`.
+* **Threat Neutralized**: Complete immunity against classic and blind SQL injection vulnerabilities.
 
-3. Run the automated database initializer & seeder:
-   ```bash
-   cd backend
-   npm run db:init
-   ```
-   *This automatically executes `schema.sql`, generates real bcrypt hashes, and seeds initial data.*
+### 7. Cross-Site Scripting (XSS) Sanitization
+* **Standard**: Dual-layer defense utilizing `express-validator` and custom recursive middleware stripping `<script>` blocks, HTML injection, and `javascript:` pseudo-protocols across headers, query parameters, and JSON payloads.
 
----
+### 8. Atomic Transactions & Stock Isolation
+* **Standard**: Inventory adjustments execute in strict PostgreSQL atomic transactions (`BEGIN`, `SELECT ... FOR UPDATE`, `COMMIT`, `ROLLBACK`).
+* **Threat Neutralized**: Eliminates race conditions and stock balance corruption under concurrent high-throughput orders.
 
-### Step 2: Run Backend Server
-```bash
-cd backend
-npm install
-npm run dev
-```
-- API Server will run at: **`http://localhost:5000`**
-- Health Check: **`http://localhost:5000/health`**
+### 9. High-Value / Volume Anomaly Detection
+* **Standard**: Outbound sales exceeding 100 medicine units or $5,000 USD are automatically flagged as anomalous (`is_anomalous = TRUE`) and highlighted in both the transaction ledger and auditor dashboard.
 
----
-
-### Step 3: Run Frontend React App
-```bash
-cd frontend
-npm install
-npm run dev
-```
-- Frontend application will run at: **`http://localhost:3000`**
-
----
-
-## 🔑 Default Test Accounts
-
-| Role | Email | Password | Access Privileges |
-|---|---|---|---|
-| 👑 **Admin** | `admin@tropicalvet.com` | `Admin123!` | Full system access: Inventory CRUD, Supplier CRUD, Transactions, Audit Logs, Delete Operations |
-| 💼 **Staff** | `staff@tropicalvet.com` | `Staff123!` | Inventory Management (Add/Edit), Suppliers (Add/Edit), Record Sales & Purchases |
-| 🔍 **Auditor** | `auditor@tropicalvet.com` | `Auditor123!` | Read-Only Access: Review Inventory, Review Suppliers, Inspect Full Audit Trail & Security Alerts |
-
-*(Quick one-click evaluation buttons are also provided directly on the Login screen).*
-
----
-
-## 🔒 Comprehensive Tropical Veterinary Cybersecurity Architecture
-
-### 1. Cryptographic Password Protection
-- **Implementation**: Uses `bcryptjs` with **10 salt rounds** (`bcrypt.genSalt(10)`).
-- **Defense**: Defends against rainbow table attacks and pre-computed hash lookup dictionaries.
-
-### 2. JWT Authentication & Bearer Token Claims
-- **Implementation**: Issues signed JWT tokens using HMAC-SHA256 (`jsonwebtoken`) containing user ID, username, email, and RBAC role. Tokens automatically expire after 8 hours (`JWT_EXPIRES_IN=8h`).
-- **Defense**: Stateless authentication with signature validation prevents session tampering.
-
-### 3. Role-Based Access Control (RBAC) & Principle of Least Privilege
-- **Implementation**: `authorizeRoles('Admin', 'Staff', 'Auditor')` middleware enforces granular role authorization at the route level.
-- **Segregation of Duties**:
-  - Only **Admin** can perform destructive `DELETE` operations.
-  - Only **Admin** and **Auditor** can access the security audit logs and intrusion alerts (`/api/audit/*`).
-  - Unauthorized attempts immediately log high-severity alerts to `security_alerts`.
-
-### 4. Brute-Force Defense: 5-Failed Attempts Account Lockout
-- **Implementation**: Tracks consecutive failed password attempts in `users.failed_login_attempts`. On the 5th failed attempt, the account is locked for 15 minutes (`locked_until = NOW() + 15 mins`) and an `ACCOUNT_LOCKED` security alert is dispatched.
-- **Defense**: Mitigates automated online dictionary and credential-stuffing attacks.
-
-### 5. Intrusion Detection: Rapid Request Burst Monitoring
-- **Implementation**: `detectRapidRequests` middleware tracks timestamps per client IP. Requests to authentication endpoints with intervals `< 150ms` trigger a `RAPID_REQUEST_ANOMALY` alert.
-- **Defense**: Detects automated brute-force bots and script-based credential crackers.
-
-### 6. IP Anomaly Detection
-- **Implementation**: The system records `last_login_ip`. If a user successfully logs in from an IP address different from their prior session, an `UNUSUAL_IP_LOGIN` alert is raised.
-
-### 7. SQL Injection Immunity
-- **Implementation**: All SQL interactions use parameterized queries with `$1, $2, ... $n` variable binding via `pg.Pool.query`. Raw user strings are never concatenated directly into SQL clauses.
-
-### 8. Cross-Site Scripting (XSS) Sanitization
-- **Implementation**: The custom `sanitizeInput` middleware and `express-validator.escape()` recursively strip `<script>` tags and `javascript:` URIs from all incoming JSON payloads, query parameters, and route parameters.
-
-### 9. Atomic Transaction Stock Isolation (Race Condition Prevention)
-- **Implementation**: Medicine transactions use PostgreSQL atomic transactions (`BEGIN`, `SELECT ... FOR UPDATE`, `COMMIT`, `ROLLBACK`). Row locking ensures that concurrent sales cannot over-allocate or corrupt medicine stock balances.
-
-### 10. High-Volume Transaction Anomaly Detection
-- **Implementation**: Sales exceeding 100 units or $5,000 USD total are automatically flagged with `is_anomalous = TRUE` and logged to `security_alerts` for auditor review.
-
-### 11. Immutable Security Audit Logging (Non-Repudiation)
-- **Implementation**: All sensitive actions (`AUTH_LOGIN`, `MEDICINE_CREATE`, `MEDICINE_DELETE`, `TRANSACTION_SALE`, etc.) write an immutable record to `audit_logs` capturing user ID, email, role, action, target resource, client IP, user-agent, and status.
+### 10. Immutable Security Audit Trail (Non-Repudiation)
+* **Standard**: Every sensitive lifecycle event (`AUTH_LOGIN`, `MEDICINE_CREATE`, `MEDICINE_DELETE`, `TRANSACTION_SALE`, etc.) writes an unalterable log containing timestamp, user identity, role, target resource, client IP, and HTTP user-agent.
 
 ---
 
 ## 📡 API Endpoint Reference
 
-| Method | Endpoint | Access | Description |
+| Method | Endpoint | Authorization | Description |
 |---|---|---|---|
-| `POST` | `/api/auth/register` | Public | Register new user account |
-| `POST` | `/api/auth/login` | Public (Rate Limited) | Authenticate user & issue JWT |
-| `GET` | `/api/auth/me` | Authenticated | Fetch current profile |
-| `GET` | `/api/inventory` | Admin, Staff, Auditor | List medicines (search & filters) |
-| `GET` | `/api/inventory/analytics/predictive` | Admin, Staff, Auditor | Stockout velocity forecast & KPIs |
-| `GET` | `/api/inventory/:id` | Admin, Staff, Auditor | Single medicine details |
-| `POST` | `/api/inventory` | Admin, Staff | Create medicine item |
-| `PUT` | `/api/inventory/:id` | Admin, Staff | Update medicine item |
-| `DELETE` | `/api/inventory/:id` | **Admin Only** | Delete medicine item |
-| `GET` | `/api/suppliers` | Admin, Staff, Auditor | List suppliers & medicine counts |
-| `POST` | `/api/suppliers` | Admin, Staff | Register new supplier |
-| `PUT` | `/api/suppliers/:id` | Admin, Staff | Update supplier details |
-| `DELETE` | `/api/suppliers/:id` | **Admin Only** | Delete supplier |
-| `GET` | `/api/transactions` | Admin, Staff, Auditor | List transactions with filters |
-| `POST` | `/api/transactions` | Admin, Staff | Record sale/purchase transaction |
-| `GET` | `/api/audit/logs` | **Admin, Auditor** | View immutable audit trail |
-| `GET` | `/api/audit/alerts` | **Admin, Auditor** | View intrusion alerts |
-| `PUT` | `/api/audit/alerts/:id/resolve` | **Admin, Auditor** | Mark security alert resolved |
+| `GET` | `/health` | Public | System uptime & health diagnostic |
+| `POST` | `/api/auth/register` | Public | Register new staff account |
+| `POST` | `/api/auth/login` | Public (Rate Limited) | Authenticate user & issue 8h JWT |
+| `GET` | `/api/auth/me` | Authenticated | Fetch authenticated user profile |
+| `GET` | `/api/inventory` | Admin, Staff, Auditor | List medicines (search, categories, expiry) |
+| `GET` | `/api/inventory/analytics/predictive` | Admin, Staff, Auditor | Stockout velocity forecast & restocking KPIs |
+| `GET` | `/api/inventory/:id` | Admin, Staff, Auditor | Fetch single medicine details |
+| `POST` | `/api/inventory` | Admin, Staff | Create medicine catalog item |
+| `PUT` | `/api/inventory/:id` | Admin, Staff | Update pricing, quantity, or reorder levels |
+| `DELETE` | `/api/inventory/:id` | **Admin Only** | Remove medicine from catalog |
+| `GET` | `/api/suppliers` | Admin, Staff, Auditor | Directory of pharmaceutical suppliers |
+| `POST` | `/api/suppliers` | Admin, Staff | Register new medicine distributor |
+| `PUT` | `/api/suppliers/:id` | Admin, Staff | Update supplier contact information |
+| `DELETE` | `/api/suppliers/:id` | **Admin Only** | Remove supplier |
+| `GET` | `/api/transactions` | Admin, Staff, Auditor | Filtered transaction history |
+| `POST` | `/api/transactions` | Admin, Staff | Record purchase or sales transaction |
+| `GET` | `/api/audit/logs` | **Admin, Auditor** | View immutable security audit trail |
+| `GET` | `/api/audit/alerts` | **Admin, Auditor** | View intrusion alerts and anomalies |
+| `PUT` | `/api/audit/alerts/:id/resolve` | **Admin, Auditor** | Mark security threat resolved |
 
 ---
 
-## 👨‍💻 System Capabilities Checklist
+## 📂 Project Repository Structure
 
-- [x] Full Backend with Express, Node.js, and PostgreSQL
-- [x] Database Schema with 6 relational tables, check constraints, foreign keys, and indexes
-- [x] Bcrypt password hashing (10 rounds) & JWT tokens (8h expiry)
-- [x] 3 RBAC Roles: Admin, Staff, Auditor
-- [x] 5-Attempt account lockout for 15 minutes
-- [x] Intrusion detection (rapid request bursts & IP change warnings)
-- [x] Input validation & XSS sanitization (Express Validator + custom regex filter)
-- [x] SQL Injection protection via parameterized queries
-- [x] Predictive low-stock velocity calculation
-- [x] High-volume transaction anomaly detection
-- [x] Modern, clean React frontend with role-aware UI and glassmorphism styling
-- [x] Complete setup instructions and Tropical Veterinary cybersecurity defense documentation
+```
+veterinary-drug-supply-management-system/
+├── README.md                           # Master documentation, architecture & live links
+├── backend/
+│   ├── .env.example                    # Template for cloud & local environment variables
+│   ├── package.json                    # Backend dependencies (Express, pg, bcrypt, helmet)
+│   ├── server.js                       # Express bootstrap, CORS & global security policies
+│   ├── config/
+│   │   └── db.js                       # PostgreSQL connection pool with Neon SSL support
+│   ├── database/
+│   │   ├── schema.sql                  # Production DDL (tables, checks, constraints, indexes)
+│   │   ├── seed.sql                    # Initial drug catalog and RBAC accounts
+│   │   └── initDb.js                   # Automated one-step DB creation and seeding script
+│   ├── middleware/
+│   │   ├── auth.js                     # JWT verification & RBAC authorization
+│   │   ├── security.js                 # Rate limiters, rapid detection, XSS sanitizers
+│   │   ├── validate.js                 # Express-validator input validation rules
+│   │   └── auditLogger.js              # Immutable audit logging helper
+│   ├── controllers/                    # Business logic controllers
+│   └── routes/                         # Express API route modules
+│
+└── frontend/
+    ├── package.json                    # React 18, Vite, Lucide React dependencies
+    ├── vite.config.js                  # Vite configuration & local /api proxy
+    ├── vercel.json                     # Vercel SPA rewrite routing configuration
+    └── src/
+        ├── App.jsx                     # Route definitions & authenticated shell
+        ├── index.css                   # Custom medical emerald design system
+        ├── api/client.js               # Centralized HTTP client with JWT interceptor
+        ├── context/AuthContext.jsx     # User session & permission provider
+        ├── components/                 # Modals, Navbar, Sidebar, StatCards
+        └── pages/                      # Dashboard, Inventory, Suppliers, Ledger, Audit
+```
 
 ---
-*Developed for Tropical Veterinary Drug Supply Management System.*
+
+## 💻 Local Development Setup
+
+### 1. Prerequisites
+* **Node.js** v18+ 
+* **PostgreSQL** (Local instance or free [Neon.tech](https://neon.tech) cloud database)
+
+### 2. Backend Setup
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Edit .env with your local credentials or Neon DATABASE_URL
+npm run db:init     # Builds schema and seeds accounts
+npm run dev         # Launches backend on http://localhost:5000
+```
+
+### 3. Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev         # Launches Vite dev server on http://localhost:3000
+```
+
+---
+
+## 📄 License & Attribution
+
+Developed for **Tropical Veterinary Import & Distribution Operations**. Distributed under the ISC License.
